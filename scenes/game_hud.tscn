@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=3 uid="uid://i4buy3yrycwy"]
+
+[ext_resource type="Script" path="res://scripts/game_hud.gd" id="1_5dflv"]
+[ext_resource type="Texture2D" uid="uid://3rko4bw876r1" path="res://assets/duck_icon.png" id="1_nl5b3"]
+[ext_resource type="FontFile" uid="uid://2grcdasxs4me" path="res://fonts/8-BIT WONDER.TTF" id="2_bdyul"]
+[ext_resource type="Texture2D" uid="uid://bmdmjtpmoykek" path="res://assets/bear_icon.png" id="2_yhdiq"]
+
+[sub_resource type="Animation" id="Animation_3t3ls"]
+resource_name = "EndMessage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Message:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Message:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 280), Vector2(644, 490)]
+}
+
+[sub_resource type="Animation" id="Animation_ecbq8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Message:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Message:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 280)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6fdg"]
+_data = {
+"EndMessage": SubResource("Animation_3t3ls"),
+"RESET": SubResource("Animation_ecbq8")
+}
+
+[node name="game_hud" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_5dflv")
+
+[node name="Duck" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(5, 5)
+texture = ExtResource("1_nl5b3")
+flip_h = true
+
+[node name="DuckScore" type="Label" parent="Duck"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 36.8
+offset_top = 1.6
+offset_right = 76.8
+offset_bottom = 36.6
+theme_override_fonts/font = ExtResource("2_bdyul")
+theme_override_font_sizes/font_size = 16
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bear" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(40, 40)
+texture = ExtResource("2_yhdiq")
+flip_h = true
+
+[node name="BearScore" type="Label" parent="Bear"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -36.8
+offset_top = 1.60001
+offset_right = 3.20001
+offset_bottom = 36.6
+theme_override_fonts/font = ExtResource("2_bdyul")
+theme_override_font_sizes/font_size = 16
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 640.0
+offset_top = 280.0
+offset_right = 1272.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_bdyul")
+theme_override_font_sizes/font_size = 72
+text = "BEAR WINS!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j6fdg")
+}

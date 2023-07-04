@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4jiuhfxcemmh"]
+
+[ext_resource type="Script" path="res://scripts/sound_manager.gd" id="1_yxyqa"]
+[ext_resource type="AudioStream" uid="uid://ctijeqmuqhsb1" path="res://sounds/BallHit.ogg" id="2_lwfas"]
+[ext_resource type="AudioStream" uid="uid://v7ffw3dddc8x" path="res://sounds/PointWin.wav" id="3_ikuao"]
+[ext_resource type="AudioStream" uid="uid://cd0p2w7o13bwd" path="res://sounds/StartRound.wav" id="4_aagn6"]
+[ext_resource type="AudioStream" uid="uid://glfcp7vacry" path="res://sounds/Swing.mp3" id="5_mdbs8"]
+[ext_resource type="AudioStream" uid="uid://o4p3xmrpr5wu" path="res://sounds/UIClick.wav" id="6_a6l65"]
+
+[node name="SoundManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_yxyqa")
+
+[node name="BallHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lwfas")
+
+[node name="PointWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ikuao")
+
+[node name="StartRound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_aagn6")
+
+[node name="Swing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mdbs8")
+
+[node name="UIClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_a6l65")

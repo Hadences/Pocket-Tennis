@@ -1,0 +1,124 @@
+[gd_scene load_steps=14 format=3 uid="uid://38npvb5jmd0e"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_kwa8y"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="2_jhnob"]
+[ext_resource type="TileSet" uid="uid://c3120vkylkx2k" path="res://scenes/game.tres" id="3_85d8l"]
+[ext_resource type="PackedScene" uid="uid://dwnv8lnqusss1" path="res://scenes/player.tscn" id="5_5q8ji"]
+[ext_resource type="PackedScene" uid="uid://coknqg15chqhd" path="res://scenes/enemy.tscn" id="5_nwi1s"]
+[ext_resource type="PackedScene" uid="uid://cvnm1samm8yog" path="res://scenes/ball.tscn" id="6_w6iel"]
+[ext_resource type="Script" path="res://scripts/data.gd" id="7_fs2kx"]
+[ext_resource type="PackedScene" uid="uid://bism0c6phibtk" path="res://scenes/hud.tscn" id="7_u48w1"]
+[ext_resource type="PackedScene" uid="uid://i4buy3yrycwy" path="res://scenes/game_hud.tscn" id="9_5wi8j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmn53"]
+size = Vector2(320, 2.66669)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykur8"]
+size = Vector2(2.66667, 173.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e67ve"]
+size = Vector2(768, 422.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ho3j"]
+size = Vector2(768, 427)
+
+[node name="game" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
+script = ExtResource("1_kwa8y")
+
+[node name="world" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_jhnob")
+
+[node name="Environment" type="TileMap" parent="world"]
+scale = Vector2(6, 6)
+tile_set = ExtResource("3_85d8l")
+format = 2
+layer_0/tile_data = PackedInt32Array(65542, 1, 0, 589830, 1, 4, 589837, 196609, 4, 65549, 196609, 0, 65548, 131073, 0, 65547, 131073, 0, 65546, 131073, 0, 65545, 131073, 0, 65544, 131073, 0, 65543, 131073, 0, 589831, 65537, 4, 589832, 65537, 4, 589833, 65537, 4, 589834, 65537, 4, 589835, 65537, 4, 589836, 65537, 4, 524301, 196609, 3, 458765, 196609, 2, 393229, 196609, 2, 327693, 196609, 2, 262157, 196609, 2, 196621, 196609, 2, 131085, 196609, 1, 131078, 1, 1, 196614, 1, 2, 262150, 1, 2, 327686, 1, 2, 393222, 1, 2, 458758, 1, 2, 524294, 1, 3, 524297, 65537, 3, 524298, 131073, 3, 131082, 131073, 1, 131081, 65537, 1, 196617, 65537, 2, 262153, 65537, 2, 327689, 65537, 2, 393225, 65537, 2, 458761, 65537, 2, 458762, 131073, 2, 393226, 131073, 2, 327690, 131073, 2, 262154, 131073, 2, 196618, 131073, 2, 196619, 262145, 0, 262155, 262145, 0, 262156, 262145, 0, 196620, 262145, 0, 327692, 262145, 0, 393228, 262145, 0, 458764, 262145, 0, 458763, 262145, 0, 393227, 262145, 0, 327691, 262145, 0, 196616, 262145, 0, 196615, 262145, 0, 262151, 262145, 0, 327687, 262145, 0, 393223, 262145, 0, 458759, 262145, 0, 458760, 262145, 0, 393224, 262145, 0, 327688, 262145, 0, 262152, 262145, 0, 524299, 262145, 3, 524300, 262145, 3, 131080, 262145, 4, 131079, 262145, 4, 131083, 262145, 4, 131084, 262145, 4, 524295, 262145, 3, 524296, 262145, 3, 14, 262145, 0, 65550, 262145, 0, 131086, 262145, 0, 196622, 262145, 0, 262158, 262145, 0, 327694, 262145, 0, 393230, 262145, 0, 458766, 262145, 0, 524302, 262145, 0, 589838, 262145, 0, 655374, 262145, 0, 720910, 262145, 0, 15, 262145, 0, 65551, 262145, 0, 131087, 262145, 0, 196623, 262145, 0, 262159, 262145, 0, 327695, 262145, 0, 393231, 262145, 0, 458767, 262145, 0, 524303, 262145, 0, 589839, 262145, 0, 655375, 262145, 0, 720911, 262145, 0, 16, 262145, 0, 65552, 262145, 0, 131088, 262145, 0, 196624, 262145, 0, 262160, 262145, 0, 327696, 262145, 0, 393232, 262145, 0, 458768, 262145, 0, 524304, 262145, 0, 589840, 262145, 0, 655376, 262145, 0, 720912, 262145, 0, 17, 262145, 0, 65553, 262145, 0, 131089, 262145, 0, 196625, 262145, 0, 262161, 262145, 0, 327697, 262145, 0, 393233, 262145, 0, 458769, 262145, 0, 524305, 262145, 0, 589841, 262145, 0, 655377, 262145, 0, 720913, 262145, 0, 18, 262145, 0, 65554, 262145, 0, 131090, 262145, 0, 196626, 262145, 0, 262162, 262145, 0, 327698, 262145, 0, 393234, 262145, 0, 458770, 262145, 0, 524306, 262145, 0, 589842, 262145, 0, 655378, 262145, 0, 720914, 262145, 0, 19, 262145, 0, 65555, 262145, 0, 131091, 262145, 0, 196627, 262145, 0, 262163, 262145, 0, 327699, 262145, 0, 393235, 262145, 0, 458771, 262145, 0, 524307, 262145, 0, 589843, 262145, 0, 655379, 262145, 0, 720915, 262145, 0, 0, 262145, 0, 65536, 262145, 0, 131072, 262145, 0, 196608, 262145, 0, 262144, 262145, 0, 327680, 262145, 0, 393216, 262145, 0, 458752, 262145, 0, 524288, 262145, 0, 589824, 262145, 0, 655360, 262145, 0, 720896, 262145, 0, 1, 262145, 0, 65537, 262145, 0, 131073, 262145, 0, 196609, 262145, 0, 262145, 262145, 0, 327681, 262145, 0, 393217, 262145, 0, 458753, 262145, 0, 524289, 262145, 0, 589825, 262145, 0, 655361, 262145, 0, 720897, 262145, 0, 2, 262145, 0, 65538, 262145, 0, 131074, 262145, 0, 196610, 262145, 0, 262146, 262145, 0, 327682, 262145, 0, 393218, 262145, 0, 458754, 262145, 0, 524290, 262145, 0, 589826, 262145, 0, 655362, 262145, 0, 720898, 262145, 0, 3, 262145, 0, 65539, 262145, 0, 131075, 262145, 0, 196611, 262145, 0, 262147, 262145, 0, 327683, 262145, 0, 393219, 262145, 0, 458755, 262145, 0, 524291, 262145, 0, 589827, 262145, 0, 655363, 262145, 0, 720899, 262145, 0, 4, 262145, 0, 65540, 262145, 0, 131076, 262145, 0, 196612, 262145, 0, 262148, 262145, 0, 327684, 262145, 0, 393220, 262145, 0, 458756, 262145, 0, 524292, 262145, 0, 589828, 262145, 0, 655364, 262145, 0, 720900, 262145, 0, 5, 262145, 0, 65541, 262145, 0, 131077, 262145, 0, 196613, 262145, 0, 262149, 262145, 0, 327685, 262145, 0, 393221, 262145, 0, 458757, 262145, 0, 524293, 262145, 0, 589829, 262145, 0, 655365, 262145, 0, 720901, 262145, 0, 655366, 262145, 0, 720902, 262145, 0, 655367, 262145, 0, 720903, 262145, 0, 655368, 262145, 0, 720904, 262145, 0, 655369, 262145, 0, 720905, 262145, 0, 655370, 262145, 0, 720906, 262145, 0, 655371, 262145, 0, 720907, 262145, 0, 655372, 262145, 0, 720908, 262145, 0, 655373, 262145, 0, 720909, 262145, 0, 6, 262145, 0, 7, 262145, 0, 8, 262145, 0, 9, 262145, 0, 10, 262145, 0, 11, 262145, 0, 12, 262145, 0, 13, 262145, 0)
+
+[node name="Decoration" type="TileMap" parent="world/Environment"]
+tile_set = ExtResource("3_85d8l")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 327681, 0, 131088, 327681, 0, 589839, 327681, 0, 327684, 327681, 0, 393234, 393217, 0, 589826, 393217, 0, 65554, 393217, 0, 262145, 393217, 0, 327695, 327681, 1, 65540, 327681, 1, 655372, 327681, 1, 196622, 393217, 1, 458756, 393217, 1, 327686, 1, 5, 327693, 196609, 5, 327687, 131073, 5, 327688, 131073, 5, 327689, 131073, 5, 327690, 131073, 5, 327691, 131073, 5, 327692, 131073, 5)
+
+[node name="Boundaries" type="StaticBody2D" parent="world/Environment"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/Environment/Boundaries"]
+position = Vector2(160, 0)
+shape = SubResource("RectangleShape2D_fmn53")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="world/Environment/Boundaries"]
+position = Vector2(160, 178.667)
+shape = SubResource("RectangleShape2D_fmn53")
+
+[node name="NetBoundary" type="CollisionShape2D" parent="world/Environment/Boundaries"]
+unique_name_in_owner = true
+position = Vector2(160, 88)
+shape = SubResource("RectangleShape2D_fmn53")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="world/Environment/Boundaries"]
+position = Vector2(-1.33334, 92.4167)
+shape = SubResource("RectangleShape2D_ykur8")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="world/Environment/Boundaries"]
+position = Vector2(321.333, 90.4583)
+shape = SubResource("RectangleShape2D_ykur8")
+
+[node name="Corner_BottomRight" type="Node2D" parent="world/Environment/Boundaries"]
+unique_name_in_owner = true
+position = Vector2(224, 160)
+
+[node name="Corner_BottomLeft" type="Node2D" parent="world/Environment/Boundaries"]
+unique_name_in_owner = true
+position = Vector2(96, 160)
+
+[node name="Enemy" parent="world" instance=ExtResource("5_nwi1s")]
+unique_name_in_owner = true
+metadata/_edit_group_ = true
+
+[node name="Player" parent="world" instance=ExtResource("5_5q8ji")]
+unique_name_in_owner = true
+metadata/_edit_group_ = true
+
+[node name="Ball" parent="world" instance=ExtResource("6_w6iel")]
+unique_name_in_owner = true
+
+[node name="Data" type="Node2D" parent="world"]
+unique_name_in_owner = true
+script = ExtResource("7_fs2kx")
+
+[node name="Floor_Enemy" type="Area2D" parent="world/Data"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/Data/Floor_Enemy"]
+position = Vector2(960, 307.25)
+shape = SubResource("RectangleShape2D_e67ve")
+
+[node name="Floor_Player" type="Area2D" parent="world/Data"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/Data/Floor_Player"]
+position = Vector2(960, 749.5)
+shape = SubResource("RectangleShape2D_6ho3j")
+
+[node name="SpawnPoint_Enemy" type="Node2D" parent="world/Data"]
+position = Vector2(968, 152)
+
+[node name="SpawnPoint_Player" type="Node2D" parent="world/Data"]
+position = Vector2(960, 904)
+
+[node name="HUD" parent="." instance=ExtResource("7_u48w1")]
+layer = 0
+
+[node name="game_hud" parent="." instance=ExtResource("9_5wi8j")]
+visible = false
+
+[connection signal="ball_double_tapped" from="world/Ball" to="." method="_on_ball_ball_double_tapped"]
+[connection signal="on_ball_hit" from="world/Ball" to="." method="_on_ball_on_ball_hit"]
+[connection signal="on_ball_land" from="world/Ball" to="." method="_on_ball_on_ball_land"]
+[connection signal="same_entity_hit" from="world/Ball" to="." method="_on_ball_same_entity_hit"]
+[connection signal="manual_button_pressed" from="HUD" to="." method="_on_hud_manual_button_pressed"]
+[connection signal="start_button_pressed" from="HUD" to="." method="_on_hud_start_button_pressed"]

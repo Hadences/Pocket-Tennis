@@ -1,0 +1,219 @@
+[gd_scene load_steps=18 format=3 uid="uid://bism0c6phibtk"]
+
+[ext_resource type="Texture2D" uid="uid://bs2dvyj2s7yla" path="res://assets/gui.png" id="1_10nkk"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_mupv6"]
+[ext_resource type="Texture2D" uid="uid://cbwv0srovyvwf" path="res://assets/mouse1.png" id="3_iw5mw"]
+[ext_resource type="Texture2D" uid="uid://7fimpg6qkx27" path="res://assets/mouse2.png" id="4_f072m"]
+[ext_resource type="Texture2D" uid="uid://rckijt44hpi6" path="res://assets/key1.png" id="5_8tj1g"]
+[ext_resource type="Texture2D" uid="uid://defn35bdqlaeh" path="res://assets/key3.png" id="6_x0brd"]
+[ext_resource type="Texture2D" uid="uid://bstnepkgelvku" path="res://assets/key5.png" id="7_tsib4"]
+[ext_resource type="Texture2D" uid="uid://co8rbvyel7mdw" path="res://assets/key7.png" id="8_8if5p"]
+[ext_resource type="FontFile" uid="uid://2grcdasxs4me" path="res://fonts/8-BIT WONDER.TTF" id="9_d8m85"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6743i"]
+atlas = ExtResource("1_10nkk")
+region = Rect2(4, 33, 76, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxr8e"]
+atlas = ExtResource("1_10nkk")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdlu8"]
+atlas = ExtResource("1_10nkk")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at638"]
+atlas = ExtResource("1_10nkk")
+region = Rect2(16, 17, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deic0"]
+atlas = ExtResource("1_10nkk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irucn"]
+atlas = ExtResource("1_10nkk")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bd5i"]
+atlas = ExtResource("1_10nkk")
+region = Rect2(33, 18, 14, 14)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_bc43d"]
+frames = 2
+frame_0/texture = ExtResource("3_iw5mw")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("4_f072m")
+frame_1/duration = 0.2
+
+[node name="HUD" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_mupv6")
+
+[node name="TITLE" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -116.0
+offset_right = 38.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10, 10)
+pivot_offset = Vector2(35.5682, 19.208)
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = SubResource("AtlasTexture_6743i")
+stretch_mode = 3
+
+[node name="BUTTON_START" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 42.0
+offset_right = -80.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(20, 20)
+texture_normal = SubResource("AtlasTexture_uxr8e")
+texture_hover = SubResource("AtlasTexture_pdlu8")
+stretch_mode = 4
+
+[node name="StartImage" type="TextureRect" parent="BUTTON_START"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.6667
+offset_top = -20.0
+offset_right = 21.3333
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(19.8333, 20.1667)
+texture = SubResource("AtlasTexture_at638")
+stretch_mode = 4
+
+[node name="BUTTON_MANUAL" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 84.0
+offset_top = 42.0
+offset_right = 124.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(20, 20)
+texture_normal = SubResource("AtlasTexture_deic0")
+texture_hover = SubResource("AtlasTexture_irucn")
+stretch_mode = 4
+
+[node name="StartImage2" type="TextureRect" parent="BUTTON_MANUAL"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(19.8333, 20.1667)
+texture = SubResource("AtlasTexture_8bd5i")
+stretch_mode = 4
+
+[node name="Mouse_Manual" type="TextureRect" parent="."]
+offset_left = 8.0
+offset_top = 168.0
+offset_right = 48.0
+offset_bottom = 208.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(-2.86102e-06, 0.133331)
+texture = SubResource("AnimatedTexture_bc43d")
+
+[node name="Label" type="Label" parent="Mouse_Manual"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 8.06667
+offset_right = 84.0
+offset_bottom = 31.0667
+theme_override_fonts/font = ExtResource("9_d8m85")
+theme_override_font_sizes/font_size = 15
+text = "To Hit"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 88.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+
+[node name="W" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_8tj1g")
+
+[node name="A" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 36.0
+offset_bottom = 76.0
+texture = ExtResource("6_x0brd")
+
+[node name="S" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 40.0
+offset_bottom = 76.0
+texture = ExtResource("7_tsib4")
+
+[node name="D" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 36.0
+offset_right = 80.0
+offset_bottom = 76.0
+texture = ExtResource("8_8if5p")
+
+[node name="WASD_Text" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 176.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_d8m85")
+theme_override_font_sizes/font_size = 15
+text = "To Move"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="BUTTON_START" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="BUTTON_MANUAL" to="." method="_on_button_manual_pressed"]

@@ -1,0 +1,137 @@
+[gd_scene load_steps=14 format=3 uid="uid://dwnv8lnqusss1"]
+
+[ext_resource type="Script" path="res://scripts/playerController.gd" id="1_oxiof"]
+[ext_resource type="Texture2D" uid="uid://c2a0m8ihtchyg" path="res://assets/characters/bear/bear1.png" id="2_5n1oy"]
+[ext_resource type="PackedScene" uid="uid://7hiaf7nbdadp" path="res://scenes/tennis_racket.tscn" id="2_sfo0q"]
+[ext_resource type="Texture2D" uid="uid://dwvmqgjlpuswn" path="res://assets/characters/bear/bear2.png" id="3_tjkok"]
+[ext_resource type="Texture2D" uid="uid://combxrng371vl" path="res://assets/characters/bear/bear3.png" id="4_1rltu"]
+[ext_resource type="Texture2D" uid="uid://3gc3bo0njujw" path="res://assets/characters/bear/bear4.png" id="5_wei3u"]
+[ext_resource type="Texture2D" uid="uid://cjqy7usaqvnx7" path="res://assets/characters/bear/bear5.png" id="6_bot1f"]
+
+[sub_resource type="Animation" id="Animation_o2ipo"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_lsgxi"]
+resource_name = "swing_racket_RL"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tennis_Racket:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.205393, 0.256235, 0.304663, 0.353554, 0.40618, 0.454533, 0.601436, 0.601664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(32, 9.53674e-07), Vector2(40, 8), Vector2(40, -16), Vector2(24, -32), Vector2(-1.90735e-06, -40), Vector2(-32, -32), Vector2(-48, 8), Vector2(-48, 16), Vector2(32, 9.53674e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tennis_Racket:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.601664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tennis_Racket:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.205003, 0.255845, 0.304663, 0.353554, 0.40618, 0.453416, 0.601396, 0.601664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.785398, 1.29205, 1.0281, 0.546812, -0.0345621, -0.795003, -1.49886, -1.65669, 0.785398]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2mxsl"]
+_data = {
+"RESET": SubResource("Animation_o2ipo"),
+"swing_racket_RL": SubResource("Animation_lsgxi")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_048w0"]
+size = Vector2(25, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_07unp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5n1oy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tjkok")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1rltu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wei3u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bot1f")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ytvm2"]
+radius = 51.0
+
+[node name="Player" type="RigidBody2D"]
+position = Vector2(-2, 0)
+collision_layer = 2
+collision_mask = 2
+mass = 0.2
+gravity_scale = 0.0
+contact_monitor = true
+lock_rotation = true
+script = ExtResource("1_oxiof")
+linearDrag = 15.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 3.0
+libraries = {
+"": SubResource("AnimationLibrary_2mxsl")
+}
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 12)
+shape = SubResource("RectangleShape2D_048w0")
+
+[node name="AnimationSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, 0)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_07unp")
+animation = &"run"
+
+[node name="Tennis_Racket" parent="." instance=ExtResource("2_sfo0q")]
+position = Vector2(32, 9.53674e-07)
+rotation = 0.785398
+
+[node name="SwingZone" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwingZone"]
+shape = SubResource("CircleShape2D_ytvm2")
+
+[node name="HitCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="area_entered" from="SwingZone" to="." method="_on_swing_zone_area_entered"]
+[connection signal="area_exited" from="SwingZone" to="." method="_on_swing_zone_area_exited"]
+[connection signal="timeout" from="HitCooldown" to="." method="_on_hit_cooldown_timeout"]

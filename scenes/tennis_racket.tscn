@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://7hiaf7nbdadp"]
+
+[ext_resource type="Texture2D" uid="uid://d24ul6pmquekc" path="res://assets/racket.png" id="1_08p4m"]
+
+[node name="Tennis_Racket" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.785398
+scale = Vector2(3, 3)
+texture = ExtResource("1_08p4m")
